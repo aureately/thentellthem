@@ -1,3 +1,6 @@
+html, header, nav, section, article {
+  display: block; }
+
 body {
   margin: 0;
   background-color: #ffffff;
@@ -7,12 +10,12 @@ body {
   line-height: 1.8em;
   color: #262626; }
 
+.hidden, .tumblrAutoPager_page_info {
+  display: none; }
+
 b {
   font-family: 'Open Sans', sans serif;
   font-weight: 600; }
-
-.hidden {
-  display: none; }
 
 .container {
   width: 90%;
@@ -203,7 +206,7 @@ footer {
 
   /* Audio Containers */
   #posts {
-    margin-top: 30px; }
+    margin-top: 50px; }
 
   .storycontainer {
     width: 97%; }
