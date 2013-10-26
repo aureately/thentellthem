@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <head>
-	<title>{Title}</title>
+    <title>{Title}</title>
      <meta content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, width=device-width" name="viewport">
     <meta name="description" content="{MetaDescription}" />
-	<link rel="stylesheet" type="text/css" href="https://dl.dropboxusercontent.com/u/10331303/studio/thentellthem.css">
-	<link rel="icon" type="image/gif" href="{Favicon}" />
-	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet" type="text/css">
-	<script type="text/javascript" src="http://codysherman.tumblr.com/tools/infinite-scrolling/code"></script>
+    <link rel="stylesheet" type="text/css" href="https://dl.dropboxusercontent.com/u/10331303/studio/thentellthem.css">
+    <link rel="icon" type="image/gif" href="{Favicon}" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet" type="text/css">
     <script>
         document.createElement('header');
         document.createElement('nav');
@@ -18,62 +17,92 @@
 
 <body>
 
-	<header>
-		<div class="container">
-			<div id="logo">
+    <header>
+        <div class="container">
+            <div id="logo">
                 <a href="http://www.thentellthem.tumblr.com" title="{Title}">
                      <img src="https://dl.dropboxusercontent.com/u/10331303/studio/images/logo.png" alt="{Title}">
                 </a>
             </div>
-			<nav>
-				<ul>
-					<li><a href="/about">about</a></li>
-					<li><a href="/stories">stories</a></li>	
-					<li><a href="/thoughts">thoughts</a></li>
-					<li><a href="/letters">letters</a></li>
-				</ul>
-				<ul id="secondnav">
-					<li>
-						<a class="menu" href="#"></a>
-						<ul class="menuclick">
-							<li class="navside"><a href="/about">about</a></li>
-							<li class="navside"><a href="/stories">stories</a></li>	
-							<li class="navside"><a href="/thoughts">thoughts</a></li>
-							<li class="navside"><a href="/letters">letters</a></li>
-						</ul>
-					</li>
-				</div>
-			</nav>
-		</div>
-	</header>
+            <nav>
+                <ul>
+                    <li><a href="/about">about</a></li>
+                    <li><a href="/stories">stories</a></li> 
+                    <li><a href="/thoughts">thoughts</a></li>
+                    <li><a href="/letters">letters</a></li>
+                </ul>
+                <ul id="secondnav">
+                    <li>
+                        <a class="menu" href="#"></a>
+                        <ul class="menuclick">
+                            <li class="navside"><a href="/about">about</a></li> 
+                            <li class="navside"><a href="/stories">stories</a></li> 
+                            <li class="navside"><a href="/thoughts">thoughts</a></li>
+                            <li class="navside"><a href="/letters">letters</a></li>
+                        </ul>
+                    </li>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+{block:IndexPage}
+<section class="posts" style="padding: 20px; {block:TagPage}display:none; {/block:TagPage}"> 
 
 
-	<section id="posts">
+<script type="text/javascript">
+if(location.href == 'http://thentellthem.tumblr.com/') location.replace('http://thentellthem.tumblr.com/stories');;
+</script>
+
+</section> 
+
+
+{/block:IndexPage}
+
+
+{block:TagPage}
+
+
+<section class="posts">
+    <div class = "autopagerize_page_element">
         {block:Posts}
 
-		<article class="storycontainer">
 
-	
+
+
     <!--This is for audio posts-->
+        <article class="storycontainer">
 
-   		{block:Audio}
+        {block:Audio}
 
-			{block:AlbumArt}
-			<div style="background: url('{AlbumArtURL}'); background-size: contain; background-position: center center; background-repeat: no-repeat;" class="storyimage" title="{Tag}">
-			</div>
-				<div class="playbutton">
-					{AudioPlayerWhite}
-				</div>
-			
-    		{/block:AlbumArt}
+            {block:AlbumArt}
+            <div style="background: url('{AlbumArtURL}'); background-size: contain; background-position: center center; background-repeat: no-repeat;" class="storyimage" title="{Tag}">
+            </div>
+                <div class="playbutton">
+                    {AudioPlayerWhite}
+                </div>
+            
+            {/block:AlbumArt}
 
-			<ul>
-				<li><a href="{ReblogURL}"><img src="https://dl.dropboxusercontent.com/u/10331303/studio/images/iconreblog.png"></a></li>
-				<li><a href="{ShortURL}"><img src="https://dl.dropboxusercontent.com/u/10331303/studio/images/iconshare.png"></a></li>
-			</ul>
-		{/block:Audio}
-		
-		</article>
+            <ul>
+                <li><a href="{ReblogURL}"><img src="https://dl.dropboxusercontent.com/u/10331303/studio/images/iconreblog.png"></a></li>
+                <li><a href="{ShortURL}"><img src="https://dl.dropboxusercontent.com/u/10331303/studio/images/iconshare.png"></a></li>
+            </ul>
+        {/block:Audio}
+
+
+
+    <!--This is for photo posts-->
+        {block:Photo}
+            <img src="{PhotoURL-500}" alt="{PhotoAlt}" style="max-width: 100%;"/>
+
+            <ul>
+                <li><a href="{ReblogURL}"><img src="https://dl.dropboxusercontent.com/u/10331303/studio/images/iconreblog.png"></a></li>
+                <li><a href="{ShortURL}"><img src="https://dl.dropboxusercontent.com/u/10331303/studio/images/iconshare.png"></a></li>
+            </ul>
+        {/block:Photo}
+        
+        </article>
 
 
     <!--This is for text posts-->
@@ -88,16 +117,6 @@
         </article>
 
         {/block:Text}
-
-        {block:Photo}
-        <article class="postphoto">
-            <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
-
-            {block:Caption}
-                <div class="caption">{Caption}</div>
-            {/block:Caption}
-        </article>
-        {/block:Photo}
 
         {block:Panorama}
         <article class="postpanorama">
@@ -173,8 +192,146 @@
 
 
 
-    {/block:Posts}
+        {/block:Posts}
+    </div>
+    {/block:TagPage}
 
+
+{block:PermalinkPage}
+
+
+    <section class="posts">
+        <div class = "autopagerize_page_element">
+        {block:Posts}
+
+
+        <article class="storycontainer">
+
+    
+    <!--This is for audio posts-->
+
+        {block:Audio}
+
+            {block:AlbumArt}
+            <div style="background: url('{AlbumArtURL}'); background-size: contain; background-position: center center; background-repeat: no-repeat;" class="storyimage" title="{Tag}">
+            </div>
+                <div class="playbutton">
+                    {AudioPlayerWhite}
+                </div>
+            
+            {/block:AlbumArt}
+
+            <ul>
+                <li><a href="{ReblogURL}"><img src="https://dl.dropboxusercontent.com/u/10331303/studio/images/iconreblog.png"></a></li>
+                <li><a href="{ShortURL}"><img src="https://dl.dropboxusercontent.com/u/10331303/studio/images/iconshare.png"></a></li>
+            </ul>
+        {/block:Audio}
+        
+<!--This is for photo posts-->
+
+        {block:Photo}
+
+            <img src="{PhotoURL-500}" alt="{PhotoAlt}" width="200px" height="200px"/>
+
+            <ul>
+                <li><a href="{ReblogURL}"><img src="https://dl.dropboxusercontent.com/u/10331303/studio/images/iconreblog.png"></a></li>
+                <li><a href="{ShortURL}"><img src="https://dl.dropboxusercontent.com/u/10331303/studio/images/iconshare.png"></a></li>
+            </ul>
+        {/block:Photo}
+        
+
+        </article>
+
+
+    <!--This is for text posts-->
+
+        {block:Text}
+        <article class="postblog">
+            {block:Title}
+                <h2><a href="{Permalink}">{Title}</a></h2>
+            {/block:Title}
+
+                {Body}
+        </article>
+
+        {/block:Text}
+
+        {block:Panorama}
+        <article class="postpanorama">
+            {LinkOpenTag}
+                <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}"/>
+            {LinkCloseTag}
+
+            {block:Caption}
+                <div class="caption">{Caption}</div>
+            {/block:Caption}
+        </article>
+        {/block:Panorama}
+
+        {block:Photoset}
+        <article class="postphotoset">
+            {Photoset-500}
+
+            {block:Caption}
+                <div class="caption">{Caption}</div>
+            {/block:Caption}
+        </article>
+        {/block:Photoset}
+
+        {block:Quote}
+        <article class="postquote">
+            "{Quote}"
+
+            {block:Source}
+                <div class="source">{Source}</div>
+            {/block:Source}
+        </article>
+        {/block:Quote}
+
+        {block:Link}
+        <article class="postlink">
+            <a href="{URL}" class="link" {Target}>{Name}</a>
+
+            {block:Description}
+                <div class="description">{Description}</div>
+            {/block:Description}
+        </article>
+        {/block:Link}
+
+        {block:Chat}
+        <article class="post chat">
+            {block:Title}
+                <h2><a href="{Permalink}">{Title}</a></h2>
+            {/block:Title}
+
+            <ul class="chat">
+                {block:Lines}
+                    <li class="{Alt} user_{UserNumber}">
+                        {block:Label}
+                            <span class="label">{Label}</span>
+                        {/block:Label}
+
+                        {Line}
+                    </li>
+                {/block:Lines}
+            </ul>
+        </article>
+        {/block:Chat}
+
+        {block:Video}
+        <article class="postvideo">
+            {Video-500}
+
+            {block:Caption}
+                <div class="caption">{Caption}</div>
+            {/block:Caption}
+        </article>
+        {/block:Video}
+
+
+        {/block:Posts}
+    </div>
+    {/block:PermalinkPage}
 </section>
 
 
